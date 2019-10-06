@@ -152,7 +152,7 @@
                         <!--允许移动生成的文件-->
                         <verbose>true</verbose>
                         <!--允许自动覆盖文件-->
-                        <overwrite>true</overwrite>  
+                        <overwrite>false</overwrite>
                         <configurationFile>
                             src/main/resources/mybatis-generator.xml
                         </configurationFile>
@@ -160,5 +160,13 @@
                 </plugin>
             </plugins>
         </pluginManagement>
+        <resources>
+            <resource>
+                <directory>src/main/java</directory>
+                <includes>
+                    <include>**/*.xml</include>
+                </includes>
+            </resource>
+        </resources>
     </build>
 </project>

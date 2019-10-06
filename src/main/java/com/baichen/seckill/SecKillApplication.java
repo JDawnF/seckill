@@ -2,7 +2,6 @@ package com.baichen.seckill;
 
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -11,10 +10,11 @@ import org.springframework.web.bind.annotation.RestController;
  * @Author: baichen
  * @Description
  */
-@SpringBootApplication(scanBasePackages = {"com.baichen.seckill.pojo"})
+@SpringBootApplication(scanBasePackages = {"com.baichen.seckill.*"})
 @RestController
 @MapperScan("com.baichen.seckill.dao")
 public class SecKillApplication {
+
     public static void main(String[] args) {
         SpringApplication.run(SecKillApplication.class, args);
     }
