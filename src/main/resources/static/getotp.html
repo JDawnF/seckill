@@ -32,16 +32,15 @@
 <script>
     // 页面渲染成功才可以操作
     jQuery(document).ready(function(){
-
-        //绑定otp的click事件用于像后端发送获取手机验证码请求
+        //绑定按钮otp的click事件用于像后端发送获取手机验证码请求
         $("#getotp").on("click",function(){
             var telphone = $("#telphone").val();
             
             if(telphone == null || telphone == ""){
                 alert("手机号不能为空");
-                // return false;
+                // return false;  // 不让报错传递到上层
             }
-            $.ajax({
+            $.ajax({  // 前后端分离，通过ajax实现，而不是通过form表单提交请求
                 type:"POST",
                 contentType:"application/x-www-form-urlencoded",
                 url:"http://localhost:8080/user/getotp",
@@ -50,7 +49,7 @@
                 },
                 xhrFields:{withCredentials:true},
                 success:function(data){
-                    if(data.status == "success"){
+                    if(data.status == "success"){ // BaseController中封装了返回的统一异常处理器
                         alert("otp已经发送到了手机，请注意查收");
                         window.location.href="register.html";
                     } else {
